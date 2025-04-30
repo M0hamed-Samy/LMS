@@ -17,11 +17,7 @@ class User extends Authenticatable
      *
      * @var list<string>
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -32,6 +28,23 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    // Helper methods for role checking
+
+    public function isAdmin()
+    {
+        return $this->role === 'admin';
+    }
+
+    public function isInstructor()
+    {
+        return $this->role === 'instructor';
+    }
+
+    public function isUser()
+    {
+        return $this->role === 'user';
+    }
 
     /**
      * Get the attributes that should be cast.

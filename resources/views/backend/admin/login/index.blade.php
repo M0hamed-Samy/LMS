@@ -2,8 +2,10 @@
 <html lang="en">
 
 <head>
+    <!-- Required meta tags -->
     @include('backend.section.link')
-    <title>LMS - Admin login</title>
+
+    <title>LMS-Admin Login Credentials</title>
 </head>
 
 <body class="">
@@ -34,24 +36,30 @@
                                             alt="">
                                     </div>
                                     <div class="text-center mb-4">
-                                        <h5 class="">LMS Admin</h5>
+                                        <h5 class="">Admin Credential</h5>
                                         <p class="mb-0">Please log in to your account</p>
                                     </div>
                                     <div class="form-body">
-                                        <form class="row g-3">
+
+                                        <form class="row g-3" method="post" action="{{ route('login') }}">
+                                            @csrf
                                             <div class="col-12">
                                                 <label for="inputEmailAddress" class="form-label">Email</label>
-                                                <input type="email" class="form-control" id="inputEmailAddress"
+                                                <input type="email" class="form-control" name="email"
+                                                    id="inputEmailAddress" value="{{ old('email') }}"
                                                     placeholder="jhon@example.com">
+                                                <x-input-error :messages="$errors->get('email')" class="mt-2" />
                                             </div>
                                             <div class="col-12">
                                                 <label for="inputChoosePassword" class="form-label">Password</label>
                                                 <div class="input-group" id="show_hide_password">
                                                     <input type="password" class="form-control border-end-0"
-                                                        id="inputChoosePassword" value="12345678"
-                                                        placeholder="Enter Password"> <a href="javascript:;"
-                                                        class="input-group-text bg-transparent"><i
+                                                        name="password" id="inputChoosePassword"
+                                                        placeholder="Enter Password">
+
+                                                    <a href="javascript:;" class="input-group-text bg-transparent"><i
                                                             class="bx bx-hide"></i></a>
+                                                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -62,40 +70,17 @@
                                                         for="flexSwitchCheckChecked">Remember Me</label>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6 text-end"> <a
-                                                    href="authentication-forgot-password.html">Forgot Password ?</a>
-                                            </div>
+
                                             <div class="col-12">
                                                 <div class="d-grid">
                                                     <button type="submit" class="btn btn-primary">Sign in</button>
                                                 </div>
                                             </div>
-                                            <div class="col-12">
-                                                <div class="text-center ">
-                                                    <p class="mb-0">Don't have an account yet? <a
-                                                            href="authentication-signup.html">Sign up here</a>
-                                                    </p>
-                                                </div>
-                                            </div>
+
                                         </form>
+
                                     </div>
-                                    <div class="login-separater text-center mb-5"> <span>OR SIGN IN WITH</span>
-                                        <hr>
-                                    </div>
-                                    <div class="list-inline contacts-social text-center">
-                                        <a href="javascript:;"
-                                            class="list-inline-item bg-facebook text-white border-0 rounded-3"><i
-                                                class="bx bxl-facebook"></i></a>
-                                        <a href="javascript:;"
-                                            class="list-inline-item bg-twitter text-white border-0 rounded-3"><i
-                                                class="bx bxl-twitter"></i></a>
-                                        <a href="javascript:;"
-                                            class="list-inline-item bg-google text-white border-0 rounded-3"><i
-                                                class="bx bxl-google"></i></a>
-                                        <a href="javascript:;"
-                                            class="list-inline-item bg-linkedin text-white border-0 rounded-3"><i
-                                                class="bx bxl-linkedin"></i></a>
-                                    </div>
+
 
                                 </div>
                             </div>
@@ -108,8 +93,8 @@
         </div>
     </div>
     <!--end wrapper-->
-    @include('backend.section.script')
 
+    @include('backend.section.script')
 </body>
 
 </html>
