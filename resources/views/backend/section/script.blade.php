@@ -12,6 +12,10 @@
 <script src="{{ asset('backend/assets/plugins/chartjs/js/chart.js') }}"></script>
 <script src="{{ asset('backend/assets/js/index.js') }}"></script>
 
+<!----Sweet Alert---->
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
+
 
 
 <!--Password show & hide js -->
@@ -36,21 +40,47 @@
     new PerfectScrollbar(".app-container")
 </script>
 
+<!----Photo Preview Script ----->
 
-{{-- Photo settings --}}
 <script>
     $(document).ready(function() {
-        $('#photo').on('change', function() {
-            const [file] = this.target.files;
+        $('#Photo').on('change', function(event) {
+            const [file] = event.target.files;
             if (file) {
-                $('#photoPreview').attr('src', URL.createObjectURL(file))
-                    .css('display', 'block'); //show the photo
+                $('#photoPreview')
+                    .attr('src', URL.createObjectURL(file))
+                    .css('display', 'block'); // Show the image preview
             }
         });
     });
+</script>
 
-    <
-    !--app JS-- >
-    <
-    script src = "{{ asset('backend/assets/js/app.js') }}" >
+<!--app JS-->
+<script src="{{ asset('backend/assets/js/app.js') }}"></script>
+
+<!----sweetalert---->
+<script>
+    @if (session('success'))
+        Swal.fire({
+            toast: true,
+            position: 'top-end',
+            icon: 'success',
+            title: '{{ session('success') }}',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            background: '#fff',
+        });
+    @elseif (session('error'))
+        Swal.fire({
+            toast: true,
+            position: 'top-end',
+            icon: 'error',
+            title: '{{ session('error') }}',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            background: '#fff',
+        });
+    @endif
 </script>

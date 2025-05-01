@@ -31,9 +31,10 @@ Route::middleware(['auth', 'verified', 'role:admin'])->prefix('admin')->name('ad
 Route::get('/instructor/login', [InstructorController::class, 'login'])->name('instructor.login');
 Route::middleware(['auth', 'verified', 'role:instructor'])->prefix('instructor')->name('instructor.')->group(function () {
     Route::get('/dashboard', [InstructorController::class, 'dashboard'])->name('dashboard');
-    Route::post('/logout', [InstructorController::class, 'destroy'])
-        ->name('logout');
+    Route::post('/logout', [InstructorController::class, 'destroy'])->name('logout');
 
+
+    // Profile Route
     Route::get('/profile', [InstructorProfileController::class, 'index'])->name('profile');
     Route::post('/profile/store', [InstructorProfileController::class, 'store'])->name('profile.store');
     Route::get('/setting', [InstructorProfileController::class, 'setting'])->name('setting');
