@@ -5,8 +5,6 @@
             </div>
 
 
-
-
             <div class="top-menu ms-auto">
                 <ul class="navbar-nav align-items-center gap-1">
                     <li class="nav-item mobile-search-icon d-flex d-lg-none" data-bs-toggle="modal"
@@ -96,6 +94,7 @@
                     </li>
                 </ul>
             </div>
+
             <div class="user-box dropdown px-3">
                 <a class="d-flex align-items-center nav-link dropdown-toggle gap-3 dropdown-toggle-nocaret"
                     href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -107,10 +106,10 @@
                     </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
-                    <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
+                    <li><a class="dropdown-item d-flex align-items-center" href="{{ route('instructor.profile') }}"><i
                                 class="bx bx-user fs-5"></i><span>Profile</span></a>
                     </li>
-                    <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
+                    <li><a class="dropdown-item d-flex align-items-center" href="{{ route('instructor.setting') }}"><i
                                 class="bx bx-cog fs-5"></i><span>Settings</span></a>
                     </li>
 
@@ -130,6 +129,7 @@
                     </li>
                 </ul>
             </div>
+
         </nav>
     </div>
 </header>
